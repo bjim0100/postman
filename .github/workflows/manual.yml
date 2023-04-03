@@ -1,6 +1,10 @@
 name: Automated API tests using Postman CLI
 
 on: push
+  pull_request:
+    types: [opened, reopened]
+  schedule:
+    - cron: "*/10 * * * *"
 
 jobs:
   automated-api-tests:
@@ -15,3 +19,4 @@ jobs:
       - name: Run API tests
         run: |
           postman collection run "11527803-15473347-030b-4c39-a887-ac302cf1bee5" -e "11527803-fa63c087-9020-4e71-ba7f-f4a27af286e5"
+
